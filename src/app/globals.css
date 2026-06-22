@@ -167,29 +167,12 @@ tr:nth-child(even) {
 /* Brand Section */
 .brand-header {
   background-color: var(--white);
-  padding: 20px 5%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   border-bottom: 3px solid var(--primary);
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.brand-left {
-  display: flex;
-  align-items: center;
-  gap: 16px;
 }
 
 .brand-logo {
   height: 75px;
   width: auto;
-}
-
-.brand-title-wrap {
-  display: flex;
-  flex-direction: column;
 }
 
 .brand-title {
@@ -227,18 +210,6 @@ tr:nth-child(even) {
   box-shadow: var(--shadow-md);
 }
 
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 5%;
-}
-
-.nav-links {
-  display: flex;
-  list-style: none;
-}
-
 .nav-item a {
   display: block;
   padding: 18px 24px;
@@ -255,7 +226,6 @@ tr:nth-child(even) {
 }
 
 .mobile-menu-toggle {
-  display: none;
   background: transparent;
   color: var(--white);
   padding: 10px;

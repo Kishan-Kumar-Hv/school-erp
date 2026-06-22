@@ -172,10 +172,8 @@ export default function FloatingWidgets({ school }) {
       {/* Floating Chatbot Widget Window */}
       {isChatOpen && (
         <div 
-          className="fixed bottom-24 right-6 print:hidden shadow-2xl border border-slate-200/80 bg-white flex flex-col overflow-hidden z-50 animate-in slide-in-from-bottom-5 fade-in duration-300" 
+          className="fixed bottom-24 right-4 md:right-6 w-[350px] max-w-[calc(100vw-32px)] h-[450px] max-h-[80vh] print:hidden shadow-2xl border border-slate-200/80 bg-white flex flex-col overflow-hidden z-50 animate-in slide-in-from-bottom-5 fade-in duration-300" 
           style={{
-            width: '350px',
-            height: '450px',
             borderRadius: '16px',
           }}
         >
