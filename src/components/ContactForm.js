@@ -28,21 +28,21 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
-      <h4 className="font-serif text-[#0B3C5D] text-lg font-semibold border-b border-slate-200 pb-3 mb-5">
+    <div className="content-card">
+      <h4 className="card-title">
         Admissions Inquiry Form
       </h4>
       
       {success ? (
-        <div className="bg-emerald-50 text-emerald-800 p-4 rounded border border-emerald-200 text-sm flex items-start gap-3">
-          <CheckCircle2 className="text-emerald-600 mt-0.5 flex-shrink-0" size={18} />
-          <span>{success}</span>
+        <div className="bg-emerald-50 text-emerald-800 p-5 rounded-lg border border-emerald-200 text-sm flex items-start gap-3.5 shadow-sm">
+          <CheckCircle2 className="text-emerald-600 mt-0.5 flex-shrink-0" size={20} />
+          <span className="leading-relaxed">{success}</span>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <div className="form-row grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="form-group flex flex-col gap-1.5">
-              <label className="form-label text-xs font-semibold text-slate-500">Student's Name *</label>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+          <div className="form-row grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="form-group flex flex-col gap-2">
+              <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Student's Name *</label>
               <input 
                 type="text" 
                 required 
@@ -51,8 +51,8 @@ export default function ContactForm() {
                 placeholder="Full name of student" 
               />
             </div>
-            <div className="form-group flex flex-col gap-1.5">
-              <label className="form-label text-xs font-semibold text-slate-500">Parent / Guardian Name *</label>
+            <div className="form-group flex flex-col gap-2">
+              <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Parent / Guardian Name *</label>
               <input 
                 type="text" 
                 required 
@@ -63,9 +63,9 @@ export default function ContactForm() {
             </div>
           </div>
 
-          <div className="form-row grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="form-group flex flex-col gap-1.5">
-              <label className="form-label text-xs font-semibold text-slate-500">Grade / Class Required *</label>
+          <div className="form-row grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="form-group flex flex-col gap-2">
+              <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Grade / Class Required *</label>
               <select 
                 value={formData.grade}
                 onChange={(e) => setFormData({ ...formData, grade: e.target.value })}
@@ -79,8 +79,8 @@ export default function ContactForm() {
                 <option value="PU College">PU College (Class 11/12)</option>
               </select>
             </div>
-            <div className="form-group flex flex-col gap-1.5">
-              <label className="form-label text-xs font-semibold text-slate-500">Phone Number *</label>
+            <div className="form-group flex flex-col gap-2">
+              <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Phone Number *</label>
               <input 
                 type="tel" 
                 required 
@@ -91,8 +91,8 @@ export default function ContactForm() {
             </div>
           </div>
 
-          <div className="form-group flex flex-col gap-1.5">
-            <label className="form-label text-xs font-semibold text-slate-500">Email Address</label>
+          <div className="form-group flex flex-col gap-2">
+            <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Email Address</label>
             <input 
               type="email" 
               value={formData.email}
@@ -101,8 +101,8 @@ export default function ContactForm() {
             />
           </div>
 
-          <div className="form-group flex flex-col gap-1.5">
-            <label className="form-label text-xs font-semibold text-slate-500">Brief Message / Academic Background</label>
+          <div className="form-group flex flex-col gap-2">
+            <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">Brief Message / Academic Background</label>
             <textarea 
               rows="4" 
               value={formData.desc}
@@ -111,8 +111,8 @@ export default function ContactForm() {
             ></textarea>
           </div>
 
-          <button type="submit" className="btn-gold w-full justify-center mt-2 py-3">
-            Submit Inquiry Request <ArrowRight size={16} />
+          <button type="submit" className="btn-gold w-full justify-center mt-3 py-3.5 text-sm uppercase tracking-wider font-bold shadow-md hover:scale-[1.01] active:scale-95 transition-all">
+            Submit Inquiry Request &nbsp;<ArrowRight size={16} />
           </button>
         </form>
       )}

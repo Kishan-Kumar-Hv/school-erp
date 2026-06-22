@@ -4,23 +4,29 @@ import ContactForm from '@/components/ContactForm';
 import { Shield, Clock, BookOpen, AlertCircle } from 'lucide-react';
 
 export default async function AdmissionsPage() {
-  await dbConnect();
+  let hero = null;
 
-  const hero = await Models.Hero.findOne();
+  try {
+    await dbConnect();
+    hero = await Models.Hero.findOne();
+  } catch (err) {
+    console.warn("Database offline. Running Admissions page in fallback mode.");
+  }
+
   const sHero = hero ? JSON.parse(JSON.stringify(hero)) : {};
 
   return (
     <div>
-      <div className="page-banner bg-[#0B3C5D] text-white py-12 px-[5%] text-center">
-        <h1 className="page-title font-serif text-3xl md:text-4xl font-bold mb-2">SCHOOL ADMISSIONS 2027-28</h1>
+      <div className="page-banner bg-[#0B3C5D] text-white py-20 px-[5%] text-center">
+        <h1 className="page-title font-serif text-3xl md:text-4xl font-bold mb-2 tracking-wide">School Admissions 2027-28</h1>
         <div className="page-breadcrumbs text-xs text-slate-300">Home &gt; Admissions</div>
       </div>
 
-      <div className="page-container max-w-[1200px] mx-auto py-12 px-[5%] grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+      <div className="page-container max-w-[1440px] mx-auto py-16 px-[5%] grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         
         {/* Admissions Criteria */}
-        <div className="flex flex-col gap-6">
-          <div className="bg-white border border-slate-200 p-6 rounded-lg shadow-sm border-t-4 border-t-[#0B3C5D]">
+        <div className="lg:col-span-5 flex flex-col gap-6">
+          <div className="content-card">
             <h3 className="font-serif text-[#0B3C5D] text-xl font-bold mb-3">Admission Guidelines & Criteria</h3>
             <p className="text-xs text-slate-600 leading-relaxed mb-4">
               We welcome applications from students of all backgrounds who demonstrate a desire to learn, grow, and contribute positively to our school community.
@@ -63,7 +69,7 @@ export default async function AdmissionsPage() {
         </div>
 
         {/* Inquiry Form */}
-        <div>
+        <div className="lg:col-span-7">
           <ContactForm />
         </div>
       </div>

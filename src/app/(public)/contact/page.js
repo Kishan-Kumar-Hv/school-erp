@@ -4,24 +4,30 @@ import ContactForm from '@/components/ContactForm';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 
 export default async function ContactPage() {
-  await dbConnect();
+  let contact = null;
 
-  const contact = await Models.Contact.findOne();
+  try {
+    await dbConnect();
+    contact = await Models.Contact.findOne();
+  } catch (err) {
+    console.warn("Database offline. Running Contact page in fallback mode.");
+  }
+
   const sContact = contact ? JSON.parse(JSON.stringify(contact)) : {};
 
   return (
     <div>
-      <div className="page-banner bg-[#0B3C5D] text-white py-12 px-[5%] text-center">
-        <h1 className="page-title font-serif text-3xl md:text-4xl font-bold mb-2">CONTACT US</h1>
+      <div className="page-banner bg-[#0B3C5D] text-white py-20 px-[5%] text-center">
+        <h1 className="page-title font-serif text-3xl md:text-4xl font-bold mb-2 tracking-wide">Contact Us</h1>
         <div className="page-breadcrumbs text-xs text-slate-300">Home &gt; Contact Us</div>
       </div>
 
-      <div className="page-container max-w-[1200px] mx-auto py-12 px-[5%]">
+      <div className="page-container max-w-[1440px] mx-auto py-16 px-[5%]">
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Coordinates Details Column */}
-          <div className="flex flex-col gap-6">
-            <div className="bg-white border border-slate-200 p-6 rounded-lg shadow-sm border-t-4 border-t-[#0B3C5D]">
+          <div className="lg:col-span-5 flex flex-col gap-6">
+            <div className="content-card">
               <h3 className="font-serif text-[#0B3C5D] text-xl font-bold mb-4">Get In Touch</h3>
               <p className="text-xs text-slate-600 leading-relaxed mb-6">
                 Have a question or want to visit our campus? Please reach out to our administration office via any of the coordinates below or submit an inquiry form.
@@ -79,7 +85,7 @@ export default async function ContactPage() {
           </div>
 
           {/* Inquiry Form Column */}
-          <div>
+          <div className="lg:col-span-7">
             <ContactForm />
           </div>
         </div>

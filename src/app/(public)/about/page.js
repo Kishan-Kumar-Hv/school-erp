@@ -3,22 +3,28 @@ import * as Models from '@/models/Schemas';
 import { User, Award, Shield, Check } from 'lucide-react';
 
 export default async function AboutPage() {
-  await dbConnect();
+  let about = null;
+  let principal = null;
 
-  const about = await Models.About.findOne();
-  const principal = await Models.Principal.findOne();
+  try {
+    await dbConnect();
+    about = await Models.About.findOne();
+    principal = await Models.Principal.findOne();
+  } catch (err) {
+    console.warn("Database offline. Running About page in fallback mode.");
+  }
 
   const sAbout = about ? JSON.parse(JSON.stringify(about)) : {};
   const sPrincipal = principal ? JSON.parse(JSON.stringify(principal)) : {};
 
   return (
     <div>
-      <div className="page-banner bg-[#0B3C5D] text-white py-12 px-[5%] text-center">
-        <h1 className="page-title font-serif text-3xl md:text-4xl font-bold mb-2">ABOUT OUR INSTITUTION</h1>
+      <div className="page-banner bg-[#0B3C5D] text-white py-20 px-[5%] text-center">
+        <h1 className="page-title font-serif text-3xl md:text-4xl font-bold mb-2 tracking-wide">About Our Institution</h1>
         <div className="page-breadcrumbs text-xs text-slate-300">Home &gt; About Us</div>
       </div>
 
-      <div className="page-container max-w-[1200px] mx-auto py-12 px-[5%] flex flex-col gap-12">
+      <div className="page-container max-w-[1440px] mx-auto py-12 px-[5%] flex flex-col gap-12">
         {/* Info Grid - Legacy and Foundations */}
         <div className="info-grid grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div className="info-text-block">
@@ -30,13 +36,7 @@ export default async function AboutPage() {
               We believe in holistic development. Along with scholastic achievement, our students are taught moral values, self-reliance, and compassion for the community.
             </p>
           </div>
-          {sPrincipal.photo ? (
-            <img src={sPrincipal.photo} alt="School Frontage" className="info-image w-full h-[320px] object-cover rounded-lg shadow-md" />
-          ) : (
-            <div className="w-full h-[320px] bg-slate-200 rounded-lg flex items-center justify-center text-slate-400">
-              <Shield size={64} />
-            </div>
-          )}
+          <img src="/assets/school_frontage.png" alt="School Frontage" className="info-image w-full h-[320px] object-cover rounded-lg shadow-md" />
         </div>
 
         {/* Vision, Mission, and Core Beliefs */}
@@ -86,8 +86,8 @@ export default async function AboutPage() {
 
         {/* Detailed Principal Message Card */}
         <div className="bg-white border border-slate-200 p-8 rounded-lg shadow-sm border-t-4 border-t-[#0B3C5D]">
-          <h3 className="font-serif text-[#0B3C5D] text-xl font-semibold border-b border-slate-100 pb-3 mb-6 flex items-center gap-2">
-            <User size={20} /> message from the principal desk
+          <h3 className="font-serif text-[#0B3C5D] text-xl font-semibold border-b border-slate-100 pb-3 mb-6 flex items-center gap-2 capitalize">
+            <User size={20} /> Message From The Principal's Desk
           </h3>
           <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
             {sPrincipal.photo ? (

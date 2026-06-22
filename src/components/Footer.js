@@ -22,28 +22,35 @@ export default function Footer({ school }) {
   ];
 
   return (
-    <footer className="footer-wrap bg-[#1D2731] text-white pt-12 pb-6 px-[5%] border-t-[3px] border-[#D9B310] print-hide">
-      <div className="footer-grid max-w-[1300px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+    <footer className="bg-[#0A1017] text-white py-28 pb-20 px-[8%] border-t border-slate-800/80 print-hide">
+      <div className="max-w-[1300px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
         {/* School About Column */}
-        <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-3">
-            <img src={logo} alt="School Crest Logo" className="h-[55px] w-auto object-contain" />
-            <h5 className="font-serif font-bold text-sm tracking-wider text-[#D9B310]">{schoolName.toUpperCase()}</h5>
+        <div className="flex flex-col gap-6">
+          <div className="flex items-center gap-4">
+            <img src={logo} alt="School Crest Logo" className="h-20 w-auto object-contain bg-white p-1 rounded-2xl shadow-md" />
+            <div>
+              <h5 className="font-serif font-black text-base tracking-widest text-[#D9B310] leading-snug uppercase">
+                {schoolName}
+              </h5>
+            </div>
           </div>
-          <p className="text-xs leading-relaxed text-slate-400">
+          <p className="text-sm leading-relaxed text-slate-300 pr-4 mt-2">
             Dedicated to value-driven academic excellence and complete character formation. Estd. 1978 at Hassan, Karnataka.
           </p>
         </div>
 
         {/* Quick Links Column */}
         <div className="flex flex-col">
-          <h6 className="footer-col-title font-serif text-[#D9B310] text-sm font-semibold border-b border-slate-700 pb-2.5 mb-5 tracking-wider uppercase">
+          <h6 className="font-serif text-[#D9B310] text-sm font-bold border-b border-slate-800/60 pb-3 mb-6 tracking-widest uppercase">
             Quick Links
           </h6>
-          <ul className="footer-links-list list-none flex flex-col gap-2.5 text-xs text-slate-400">
+          <ul className="list-none flex flex-col gap-4 text-sm text-slate-300">
             {menuItems.map((item) => (
               <li key={item.path}>
-                <Link href={item.path} className="hover:text-[#D9B310] hover:pl-1 transition-all">
+                <Link 
+                  href={item.path} 
+                  className="hover:text-[#D9B310] hover:translate-x-2 transition-all duration-300 inline-block"
+                >
                   {item.label}
                 </Link>
               </li>
@@ -53,44 +60,55 @@ export default function Footer({ school }) {
 
         {/* Admissions Info Column */}
         <div className="flex flex-col">
-          <h6 className="footer-col-title font-serif text-[#D9B310] text-sm font-semibold border-b border-slate-700 pb-2.5 mb-5 tracking-wider uppercase">
+          <h6 className="font-serif text-[#D9B310] text-sm font-bold border-b border-slate-800/60 pb-3 mb-6 tracking-widest uppercase">
             Admissions
           </h6>
-          <p className="text-xs leading-relaxed text-slate-400 mb-4">
-            Admissions open for Preschool to Grade IX. Visit our admissions section or download our brochure online.
+          <p className="text-sm leading-relaxed text-slate-300 mb-6 pr-2">
+            Admissions are currently open for classes starting from Preschool up to Grade IX. Download the brochure online or visit the admin office.
           </p>
-          <Link href="/admissions" className="btn-gold text-xs px-4 py-2 font-semibold bg-[#D9B310] text-[#1D2731] hover:bg-[#bda00d] rounded transition-all text-center">
+          <Link 
+            href="/admissions" 
+            className="inline-block bg-[#D9B310] hover:bg-[#bda00d] text-[#0A1017] text-xs font-extrabold px-7 py-3.5 rounded-full transition-all duration-300 text-center tracking-wider uppercase w-fit shadow-lg hover:-translate-y-1 transform"
+          >
             Admissions 2027-28
           </Link>
         </div>
 
         {/* Contact Info Column */}
         <div className="flex flex-col">
-          <h6 className="footer-col-title font-serif text-[#D9B310] text-sm font-semibold border-b border-slate-700 pb-2.5 mb-5 tracking-wider uppercase">
+          <h6 className="font-serif text-[#D9B310] text-sm font-bold border-b border-slate-800/60 pb-3 mb-6 tracking-widest uppercase">
             Contact Details
           </h6>
-          <ul className="footer-address-list list-none flex flex-col gap-3.5 text-xs text-slate-400">
-            <li className="flex items-start gap-2.5">
-              <MapPin size={16} className="text-[#D9B310] mt-0.5 flex-shrink-0" />
-              <span>{address}</span>
+          <ul className="list-none flex flex-col gap-5 text-sm text-slate-300">
+            <li className="flex items-start gap-3">
+              <MapPin size={18} className="text-[#D9B310] mt-0.5 flex-shrink-0" />
+              <span className="leading-relaxed">{address}</span>
             </li>
-            <li className="flex items-start gap-2.5">
-              <Phone size={16} className="text-[#D9B310] mt-0.5 flex-shrink-0" />
-              <span>{phone}</span>
+            <li className="flex items-start gap-3">
+              <Phone size={18} className="text-[#D9B310] mt-0.5 flex-shrink-0" />
+              <span className="font-semibold">{phone}</span>
             </li>
-            <li className="flex items-start gap-2.5">
-              <Mail size={16} className="text-[#D9B310] mt-0.5 flex-shrink-0" />
-              <span>{email}</span>
+            <li className="flex items-start gap-3">
+              <Mail size={18} className="text-[#D9B310] mt-0.5 flex-shrink-0" />
+              <span className="break-all">{email}</span>
             </li>
           </ul>
         </div>
       </div>
 
-      <div className="footer-bottom max-w-[1300px] mx-auto border-t border-slate-800 pt-5 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+      {/* Footer Bottom */}
+      <div className="max-w-[1300px] mx-auto border-t border-slate-800/50 pt-8 flex flex-col sm:flex-row justify-between items-center gap-6 text-sm text-slate-400">
         <p>© 2026 {schoolName}. All Rights Reserved.</p>
-        <p>
-          Designed with ❤️ for Demonstration | Powered by{' '}
-          <a href="https://involynk.com" target="_blank" rel="noopener noreferrer" className="text-[#D9B310] font-semibold hover:underline">
+        <p className="flex items-center gap-1.5">
+          <span>Designed with ❤️ for Demonstration</span>
+          <span className="text-slate-700">|</span>
+          <span>Powered by</span>
+          <a 
+            href="https://involynk.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-[#D9B310] font-semibold hover:underline"
+          >
             Involynk EduCMS
           </a>
         </p>
@@ -98,3 +116,5 @@ export default function Footer({ school }) {
     </footer>
   );
 }
+
+
